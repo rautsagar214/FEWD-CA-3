@@ -159,17 +159,18 @@ body{
     box-shadow: 0 0 5px 5px purple;
 }
 #ingredients{
-    height: 450px;
+    height: 480px;
     width: 350px;
     background-color:#17183B;
    position: absolute;
     right: 38vw;
-    top: 8vw;
+    top: 2vw;
     border-radius: 20px;
     padding: 50px;
     color: white;
     display: none;
     box-shadow: 0 0 0  999px  rgba(0, 0, 0, 0.765) ;
+
    
 }
 #ingredients  h2{
@@ -177,9 +178,9 @@ text-align: center;
 
 }
 #ingredients ul{
-    margin-left: 150px;
+    margin-left: 120px;
     margin-top: 20px;
-   
+    /* font-size: 17px; */
     list-style-type:decimal;
     
 }

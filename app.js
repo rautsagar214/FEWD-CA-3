@@ -1,9 +1,18 @@
+
+
+
+var Id = ""
+
+
 async function Random (){
     try {
         let data = await fetch (`https://www.themealdb.com/api/json/v1/1/random.php`)
         const response = await data.json();
         imge.src=response.meals[0].strMealThumb;
         sagar.innerText=response.meals[0].strMeal;
+        Id = response.meals[0].idMeal;
+        console.log(Id)
+        Popup(Id)
     }
     catch(error){
         console.log(error)
@@ -72,25 +81,29 @@ SearchResult.addEventListener("keypress",(e)=>{
 const materials= document.getElementById("ingredients-list")
 
 
-async function  Popup (ingredients){
+async function  Popup(ingredients){
     try {
-        let data = await fetch (`https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772`)
+        let data = await fetch (`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${ingredients}`)
         const response = await data.json();
         console.log(response.meals)
 
         materials.innerHTML="";
 
+        
+        let items = ""
+        for(i=1;i<=20;i++){
 
+            if(response.meals[0][`strIngredient${i}`] !== ""){
 
-        response.meals.forEach(element => {
-            let item = ""
-            for(i=0;i<=20;i++){
-
-                item +=` <li> ${element.strIngredient `${[i]}`} </li>`
-                materials.innerHTML += item
+                
+                console.log(response.meals[0][`strIngredient${i}`])
+                let a = response.meals[0][`strIngredient${i}`]
+                items += `<li>${a}</li>`
+                
             }
-        });
-
+                materials.innerHTML=items;
+        }
+        
 
 
     }
@@ -99,4 +112,3 @@ async function  Popup (ingredients){
     }
 }
 
-Popup(Random())
