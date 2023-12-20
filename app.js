@@ -1,9 +1,9 @@
 
 
-
+  
 var Id = ""
 
-
+// this is function which is fetching the api for displaying the random image on the screen 
 async function Random (){
     try {
         let data = await fetch (`https://www.themealdb.com/api/json/v1/1/random.php`)
@@ -26,16 +26,19 @@ const CardContainer = document.getElementById("card-container")
 
 var  MaterialDiv = document.getElementById("ingredients") 
 var removeIMG = document.getElementById("remove-png")
+
+// this event listener i used to  take an action on clicking on the random image to show ingredients page 
 imge.addEventListener("click",(c)=>{
    MaterialDiv.style.display="block"
    
 })
-
+ 
+//  this i used to remove the ingredients page by clicking on icon
 removeIMG.addEventListener("click",(c)=>{
     MaterialDiv.style.display="none"
 })
 
-
+// here i fetch the api for the search result which is searched in the search bar 
 async function  GetSearchItem (SearchItem){
     try {
         let data = await fetch (`https://www.themealdb.com/api/json/v1/1/filter.php?c=${SearchItem}`)
@@ -65,6 +68,8 @@ async function  GetSearchItem (SearchItem){
 
 
 const SearchResult = document.getElementById("search")
+
+// here i give the eventlistner to take action after search on clicking enter button 
 SearchResult.addEventListener("keypress",(e)=>{
  if(e.key=="Enter"){
     console.log(SearchResult.value) 
@@ -80,7 +85,7 @@ SearchResult.addEventListener("keypress",(e)=>{
 
 const materials= document.getElementById("ingredients-list")
 
-
+//  here this function i used to show ingredients by fetching api 
 async function  Popup(ingredients){
     try {
         let data = await fetch (`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${ingredients}`)
